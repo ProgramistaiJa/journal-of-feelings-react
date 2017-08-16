@@ -1,8 +1,9 @@
-/**
- * Created by artur on 05.07.17.
- */
 import React from 'react'
-import {Button} from 'react-bootstrap'
+import {
+    Button,
+    Glyphicon
+} from 'react-bootstrap'
+import './MenuButton.css';
 
 
 export default class MenuButton extends React.Component {
@@ -11,7 +12,7 @@ export default class MenuButton extends React.Component {
         return (
             <div className="MenuButton">
                 <Button bsStyle="primary" bsSize="large" block>
-                    <a href={this.props.href}>{this.props.value}</a>
+                    <a className="white" href={this.props.href}><Glyphicon glyph={this.props.glyph} />{this.props.value}</a>
                 </Button>
             </div>
         )
