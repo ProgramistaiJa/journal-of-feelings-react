@@ -13,13 +13,13 @@ export default  class LoginPage extends React.Component {
 
   render() {
 
-    const showLogin = {
-      'display': this.state.showLogin ? 'block' : 'none'
-    }
-
-    const showRegister = {
-      'display': this.state.showRegister ? 'block' : 'none'
-    }
+    // const showLogin = {
+    //   'display': this.state.showLogin ? 'block' : 'none'
+    // }
+    //
+    // const showRegister = {
+    //   'display': this.state.showRegister ? 'block' : 'none'
+    // }
 
     const showL = () => {
       this.setState({

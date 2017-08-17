@@ -43,7 +43,7 @@ class AddAnEntry extends React.Component {
     }
 
     render() {
-        const entries = this.props.entries === null ? [] : this.props.entries
+        //const entries = this.props.entries === null ? [] : this.props.entries
 
         return (
             <div className="AddAnEntry">

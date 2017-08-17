@@ -8,6 +8,7 @@ import {
     Glyphicon
 } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import firebase from 'firebase'
 
 export default class MainMenu extends React.Component {
 
@@ -26,10 +27,16 @@ export default class MainMenu extends React.Component {
                             <LinkContainer to="/add-an-entry">
                                 <NavItem eventKey={1}><Glyphicon glyph="star" />Add An Entry</NavItem>
                             </LinkContainer>
-                                <NavItem eventKey={2} href="#"><Glyphicon glyph="star" />Entries</NavItem>
+                            <LinkContainer to="/entries">
+                                <NavItem eventKey={2}><Glyphicon glyph="star" />Entries</NavItem>
+                            </LinkContainer>
                         </Nav>
                         <Nav pullRight>
                             <NavItem eventKey={2} href="#"><Glyphicon glyph="star" />Settings</NavItem>
+                            <NavItem
+                                onClick={() => firebase.auth().signOut()}>
+                                Wyloguj
+                            </NavItem>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

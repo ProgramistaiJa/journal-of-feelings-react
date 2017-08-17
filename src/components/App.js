@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { } from 'react'
 import {
     BrowserRouter as Router,
     Route
@@ -6,7 +6,8 @@ import {
 import 'bootstrap/dist/css/bootstrap.css'
 import FirstPage from './FirstPage'
 import './App.css'
-import AddAnEntry from "./AddAnEntry";
+import AddAnEntry from "./AddAnEntry"
+import Entries from "./Entries"
 
 
 
@@ -22,6 +23,7 @@ export default class App extends React.Component {
 
                 <Route exact path="/" component={FirstPage}/>
                 <Route path="/add-an-entry" component={AddAnEntry}/>
+                <Route path="/entries" component={Entries}/>
             </div>
         </Router>
     )
