@@ -41,9 +41,10 @@ class Entries extends React.Component {
                 <Table bordered striped hover responsive>
                     <thead>
                     <tr>
-                        <th className="text-center">data</th>
+                        <th className="text-center">Date</th>
                         <th className="text-center">Feelings</th>
-                        <th className="text-center">When</th>
+                        <th className="text-center">Situation</th>
+                        <th className="text-center">Thoughts</th>
                         <th className="text-center">Usuń</th>
                     </tr>
                     </thead>
@@ -61,6 +62,9 @@ class Entries extends React.Component {
                                     </td>
                                     <td className="text-center">
                                         { entry.when }
+                                    </td>
+                                    <td className="text-center">
+                                        { entry.thoughts }
                                     </td>
                                     <td>
                                         <Button

@@ -5,7 +5,8 @@ import {
     NavItem,
     // NavDropdown,
     // MenuItem,
-    Glyphicon
+    Glyphicon,
+    //Grid
 } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import firebase from 'firebase'
@@ -14,7 +15,7 @@ export default class MainMenu extends React.Component {
 
     render() {
         return (
-            <div className="MainMenu">
+            <div>
                 <Navbar inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
@@ -30,9 +31,11 @@ export default class MainMenu extends React.Component {
                             <LinkContainer to="/entries">
                                 <NavItem eventKey={2}><Glyphicon glyph="star" />Entries</NavItem>
                             </LinkContainer>
+                            <LinkContainer to="/entries">
+                                <NavItem eventKey={2} href="#"><Glyphicon glyph="star" />Settings</NavItem>
+                            </LinkContainer>
                         </Nav>
                         <Nav pullRight>
-                            <NavItem eventKey={2} href="#"><Glyphicon glyph="star" />Settings</NavItem>
                             <NavItem
                                 onClick={() => firebase.auth().signOut()}>
                                 Wyloguj

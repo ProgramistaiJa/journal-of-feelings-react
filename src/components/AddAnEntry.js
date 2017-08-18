@@ -10,6 +10,7 @@ import {
     Col,
     ControlLabel,
     FormControl,
+    //Grid
 } from 'react-bootstrap'
 
 
@@ -23,37 +24,38 @@ class AddAnEntry extends React.Component {
         date: this.props.date || moment().format('YYYY-MM-D'),
         feelings: this.props.feelings || '',
         when: this.props.when || '',
+        thoughts: this.props.thoughts || ''
     }
 
     handleSubmit = event => {
-        const {uid, date, feelings, when} = this.state
+        const {uid, date, feelings, when, thoughts} = this.state
 
         event.preventDefault()
 
         if (uid === null) {
-            this.props.createEntry({date, feelings, when})
+            this.props.createEntry({date, feelings, when, thoughts})
             this.setState({
                 date: '',
                 feelings: '',
-                when: ''
+                when: '',
+                thoughts: ''
             })
         } else {
-            this.props.updateEntry(uid, {date, feelings, when})
+            this.props.updateEntry(uid, {date, feelings, when, thoughts})
         }
     }
 
     render() {
-        //const entries = this.props.entries === null ? [] : this.props.entries
 
         return (
-            <div className="AddAnEntry">
+            <div >
                 <MainMenu/>
-                <Form horizontal onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit}>
                     <FormGroup controlId="formHorizontalEmail">
-                        <Col componentClass={ControlLabel} sm={2}>
+                        <Col componentClass={ControlLabel} sm={12}>
                             Date
                         </Col>
-                        <Col sm={10}>
+                        <Col sm={12}>
                             <FormControl
                                 type="date"
                                 placeholder="Date"
@@ -65,12 +67,26 @@ class AddAnEntry extends React.Component {
                         </Col>
                     </FormGroup>
                     <p>feelings when</p>
-
                     <FormGroup controlId="formControlsTextarea">
-                        <Col componentClass={ControlLabel} sm={2}>
-                            I felt
+                        <Col componentClass={ControlLabel} sm={12}>
+                            Situation
                         </Col>
-                        <Col sm={10}>
+                        <Col sm={12}>
+                            <FormControl
+                                componentClass="textarea"
+                                placeholder="Describe the situation"
+                                value={this.state.when}
+                                onChange={event => this.setState({
+                                    when: event.target.value
+                                })}
+                            />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="formControlsTextarea">
+                        <Col componentClass={ControlLabel} sm={12}>
+                            My feelings
+                        </Col>
+                        <Col sm={12}>
                             <FormControl
                                 componentClass="textarea"
                                 placeholder="Your feelings"
@@ -82,23 +98,22 @@ class AddAnEntry extends React.Component {
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formControlsTextarea">
-                        <Col componentClass={ControlLabel} sm={2}>
-                            When
+                        <Col componentClass={ControlLabel} sm={12}>
+                            My thoughts
                         </Col>
-                        <Col sm={10}>
+                        <Col sm={12}>
                             <FormControl
                                 componentClass="textarea"
-                                placeholder="when"
-                                value={this.state.when}
+                                placeholder="Your thoughts"
+                                value={this.state.thoughts}
                                 onChange={event => this.setState({
-                                    when: event.target.value
+                                    thoughts: event.target.value
                                 })}
                             />
                         </Col>
                     </FormGroup>
-
                     <FormGroup>
-                        <Col smOffset={2} sm={10}>
+                        <Col sm={12}>
                             <Button type="submit">
                                 Add an Entry
                             </Button>

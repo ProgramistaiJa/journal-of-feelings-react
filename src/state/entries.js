@@ -28,6 +28,7 @@ export const createEntry = data => dispatch => {
     date: data.date,
     feelings: data.feelings,
     when: data.when,
+    thoughts: data.thoughts,
     author: firebase.auth().currentUser.displayName
   })
 }
@@ -38,7 +39,8 @@ export const updateEntry = (uid, data) => dispatch => {
   ref.update({
     date: data.date,
     feelings: data.feelings,
-    when: data.when
+    when: data.when,
+    thoughts: data.thoughts
   })
 }
 
@@ -63,4 +65,3 @@ export default (state = initialState, action = {}) => {
       return state
   }
 }
-
