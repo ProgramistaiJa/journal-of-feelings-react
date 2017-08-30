@@ -16,11 +16,6 @@ export default class App extends React.Component {
     return (
         <Router>
             <div className="App">
-
-
-
-                <hr/>
-
                 <Route exact path="/" component={FirstPage}/>
                 <Route path="/add-an-entry" component={AddAnEntry}/>
                 <Route path="/entries" component={Entries}/>
