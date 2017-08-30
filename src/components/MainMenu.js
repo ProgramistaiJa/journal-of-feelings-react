@@ -31,7 +31,7 @@ export default class MainMenu extends React.Component {
                             <LinkContainer to="/entries">
                                 <NavItem eventKey={2}><Glyphicon glyph="star" />Entries</NavItem>
                             </LinkContainer>
-                            <LinkContainer to="/entries">
+                            <LinkContainer to="/settings">
                                 <NavItem eventKey={2} href="#"><Glyphicon glyph="star" />Settings</NavItem>
                             </LinkContainer>
                         </Nav>

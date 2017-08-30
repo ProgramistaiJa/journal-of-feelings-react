@@ -53,7 +53,7 @@ class Entries extends React.Component {
                         data !== null && data
                                         .sort((a, b) => (new Date(b.date)) - (new Date(a.date)))
                                         .map(entry => (
-                                <tr key={entry.id}>
+                                <tr key={entry.uid}>
                                     <td>
                                         { entry.date }
                                     </td>

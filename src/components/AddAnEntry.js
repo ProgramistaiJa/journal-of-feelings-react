@@ -82,6 +82,19 @@ class AddAnEntry extends React.Component {
                             />
                         </Col>
                     </FormGroup>
+
+                    <FormGroup controlId="formControlsSelectMultiple">
+                        <Col componentClass={ControlLabel} sm={12}>
+                            My feelings
+                        </Col>
+                        <Col sm={12}>
+                            <FormControl componentClass="select" multiple>
+                                <option value="select">radość</option>
+                                <option value="other">smutek</option>
+                            </FormControl>
+                        </Col>
+                    </FormGroup>
+
                     <FormGroup controlId="formControlsTextarea">
                         <Col componentClass={ControlLabel} sm={12}>
                             My feelings
