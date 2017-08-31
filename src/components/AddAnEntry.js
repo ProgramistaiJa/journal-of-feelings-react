@@ -88,9 +88,14 @@ class AddAnEntry extends React.Component {
                             My feelings
                         </Col>
                         <Col sm={12}>
-                            <FormControl componentClass="select" multiple>
-                                <option value="select">radość</option>
-                                <option value="other">smutek</option>
+                            <FormControl
+                                componentClass="select" multiple
+                                // value={this.state.multifeelings}
+                                // onChange={event => this.setState({
+                                //     multifeelings: event.target.value})}
+                            >
+                                <option value="radosc">radość</option>
+                                <option value="smutek">smutek</option>
                             </FormControl>
                         </Col>
                     </FormGroup>
