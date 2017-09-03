@@ -43,6 +43,7 @@ class Entries extends React.Component {
                     <tr>
                         <th className="text-center">Date</th>
                         <th className="text-center">Feelings</th>
+                        <th className="text-center">AllFeelings</th>
                         <th className="text-center">Situation</th>
                         <th className="text-center">Thoughts</th>
                         <th className="text-center">Usuń</th>
@@ -59,6 +60,9 @@ class Entries extends React.Component {
                                     </td>
                                     <td className="text-center">
                                         { (entry.feelings) }
+                                    </td>
+                                    <td className="text-center">
+                                        {/*{ (entry.allfeelings.miłość[0]) }*/}
                                     </td>
                                     <td className="text-center">
                                         { entry.when }
