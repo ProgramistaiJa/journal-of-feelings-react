@@ -4,7 +4,7 @@ import auth, {syncUser} from './state/auth'
 import { fetchEntries } from './state/fetchingdata'
 import entries, {initEntriesSync} from './state/entries'
 
-
+import localstorage from 'redux-localstorage'
 import firebase from 'firebase'
 
 const reducer = combineReducers({
@@ -16,7 +16,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
   applyMiddleware(
     thunk
-  )
+  ),
+    localstorage(['auth'], { key: 'JournalOfFeelings-v01'})
 ))
 
 firebase.initializeApp({

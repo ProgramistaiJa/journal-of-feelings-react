@@ -21,7 +21,7 @@ class AddAnEntry extends React.Component {
 
     state = {
         uid: this.props.uid || null,
-        date: this.props.date || moment().format('YYYY-MM-D'),
+        date: this.props.date || moment().format('DD-MM-YYYY'),
         feelings: this.props.feelings || '',
         when: this.props.when || '',
         thoughts: this.props.thoughts || '',
@@ -174,20 +174,21 @@ class AddAnEntry extends React.Component {
     }
 
     handleSubmit = event => {
-        const {uid, date, feelings, when, thoughts} = this.state
+        const {uid, date, allfeelings, feelings, when, thoughts} = this.state
 
         event.preventDefault()
 
         if (uid === null) {
-            this.props.createEntry({date, feelings, when, thoughts})
+            this.props.createEntry({date, allfeelings, feelings, when, thoughts})
             this.setState({
                 date: '',
                 feelings: '',
+                allfeelings: '',
                 when: '',
                 thoughts: ''
             })
         } else {
-            this.props.updateEntry(uid, {date, feelings, when, thoughts})
+            this.props.updateEntry(uid, {date, feelings, allfeelings, when, thoughts})
         }
     }
 
@@ -240,8 +241,32 @@ class AddAnEntry extends React.Component {
                                 // onChange={event => this.setState({
                                 //     multifeelings: event.target.value})}
                             >
-                                <option value="radosc">radość</option>
-                                <option value="smutek">smutek</option>
+
+                                {(this.state.allfeelings.miłość).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.pragnienie).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.nadzieja).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.radość).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.nienawiść).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.awersja).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.rozpacz).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.smutek).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.odwaga).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.strach).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+                                {(this.state.allfeelings.złość).map((feeling, index)=>
+                                    <option value={index} key={index}>{feeling}</option>)}
+
+                                {/*<option value="radosc">radość</option>*/}
+                                {/*<option value="smutek">smutek</option>*/}
                             </FormControl>
                         </Col>
                     </FormGroup>
