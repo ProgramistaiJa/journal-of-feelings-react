@@ -11,6 +11,7 @@ import {
     ControlLabel,
     FormControl,
     //Grid
+    Row
 } from 'react-bootstrap'
 
 
@@ -195,7 +196,7 @@ class AddAnEntry extends React.Component {
     render() {
 
         return (
-            <div >
+            <div>
                 <MainMenu/>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup controlId="formHorizontalEmail">
@@ -230,46 +231,28 @@ class AddAnEntry extends React.Component {
                         </Col>
                     </FormGroup>
 
-
+                    <h2>Feelings</h2>
 
                     <div>
 
 
 
-                        {Object.keys(this.state.allfeelings).map((feeling) =>  this.state.allfeelings[feeling].map((feeling)=>
-                            <Button value={feeling} key={feeling}>{feeling}</Button>))}
+                        {Object.keys(this.state.allfeelings)
+                            .map((feeling) => <Row key={feeling}>{
+                                this.state.allfeelings[feeling]
+                                    .map((feeling) =>
+                                        <Col sm={6} md={3}><Button value={feeling} key={feeling}>{feeling}</Button></Col>
+                                    )
+                            }</Row>)
+                        }
 
 
 
                     </div>
 
 
-                                <h2>Feelings</h2>
-                                <div>{(this.state.allfeelings.miłość).map((feeling, index)=>
-                                    <Button value={index} key={index}>{feeling}</Button>)}
-                                </div>
-                                <div>
-                                {(this.state.allfeelings.pragnienie).map((feeling, index)=>
-                                    <Button value={index} key={index}>{feeling}</Button>)}
-                                </div>
-                                {(this.state.allfeelings.nadzieja).map((feeling, index)=>
-                                    <Button value={index} key={index}>{feeling}</Button>)}
-                                {(this.state.allfeelings.radość).map((feeling, index)=>
-                                    <Button value={index} key={index}>{feeling}</Button>)}
-                                {(this.state.allfeelings.nienawiść).map((feeling, index)=>
-                                    <option value={index} key={index}>{feeling}</option>)}
-                                {(this.state.allfeelings.awersja).map((feeling, index)=>
-                                    <option value={index} key={index}>{feeling}</option>)}
-                                {(this.state.allfeelings.rozpacz).map((feeling, index)=>
-                                    <option value={index} key={index}>{feeling}</option>)}
-                                {(this.state.allfeelings.smutek).map((feeling, index)=>
-                                    <option value={index} key={index}>{feeling}</option>)}
-                                {(this.state.allfeelings.odwaga).map((feeling, index)=>
-                                    <option value={index} key={index}>{feeling}</option>)}
-                                {(this.state.allfeelings.strach).map((feeling, index)=>
-                                    <option value={index} key={index}>{feeling}</option>)}
-                                {(this.state.allfeelings.złość).map((feeling, index)=>
-                                    <option value={index} key={index}>{feeling}</option>)}
+
+
 
 
 
