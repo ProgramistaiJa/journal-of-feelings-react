@@ -230,23 +230,11 @@ class AddAnEntry extends React.Component {
                         </Col>
                     </FormGroup>
 
-                    {/*<FormGroup controlId="formControlsSelectMultiple">*/}
-                        {/*<Col componentClass={ControlLabel} sm={12}>*/}
-                            {/*My feelings*/}
-                        {/*</Col>*/}
-                        {/*<Col sm={12}>*/}
-                            {/*<FormControl*/}
-                                {/*componentClass="select" multiple*/}
-                                {/*// value={this.state.multifeelings}*/}
-                                {/*//onChange={event => this.setState({*/}
-                                {/*//   allfeelings: event.target.value})}*/}
-                            {/*>*/}
+
 
                     <div>
 
-                       {/*{Object.keys(this.state.allfeelings).map((feeling,) => { return (*/}
-                            {/*<Button key={feeling}>{feeling}</Button>)*/}
-                        {/*})}*/}
+
 
                         {Object.keys(this.state.allfeelings).map((feeling) =>  this.state.allfeelings[feeling].map((feeling)=>
                             <Button value={feeling} key={feeling}>{feeling}</Button>))}
@@ -283,11 +271,7 @@ class AddAnEntry extends React.Component {
                                 {(this.state.allfeelings.złość).map((feeling, index)=>
                                     <option value={index} key={index}>{feeling}</option>)}
 
-                                {/*<option value="radosc">radość</option>*/}
-                                {/*<option value="smutek">smutek</option>*/}
-                            {/*</FormControl>*/}
-                        {/*</Col>*/}
-                    {/*</FormGroup>*/}
+
 
                     <FormGroup controlId="formControlsTextarea">
                         <Col componentClass={ControlLabel} sm={12}>
