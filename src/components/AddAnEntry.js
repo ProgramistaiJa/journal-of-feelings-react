@@ -247,7 +247,11 @@ class AddAnEntry extends React.Component {
                        {Object.keys(this.state.allfeelings).map((feeling,) => { return (
                             <Button key={feeling}>{feeling}</Button>)
                         })}
-                        {Object.keys(this.state.allfeelings).map((feeling) => feeling)}
+
+                        {Object.keys(this.state.allfeelings).map((feeling) => this.state.allfeelings[feeling].map((feeling, index)=>
+                            <Button value={index} key={index}>{feeling}</Button>))}
+
+
 
                             </div>
 
