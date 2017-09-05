@@ -234,20 +234,25 @@ class AddAnEntry extends React.Component {
                     <h2>Feelings</h2>
 
                     <div>
-
-
-
                         {Object.keys(this.state.allfeelings)
-                            .map((feeling) => <Row key={feeling}>{
-                                this.state.allfeelings[feeling]
-                                    .map((feeling) =>
-                                        <Col sm={6} md={3}><Button value={feeling} key={feeling}>{feeling}</Button></Col>
-                                    )
-                            }</Row>)
+                            .map((feeling) =>
+                                <Row key={feeling}>
+                                    {
+                                        this.state.allfeelings[feeling]
+                                            .map((feeling) =>
+                                                <Col key={feeling} sm={6} md={3} lg={2}>
+                                                    <Button
+                                                        key={feeling}
+                                                        value={feeling}
+                                                        onClick={({feeling})=>console.log('kliknięty button feeling'+ {feeling})}
+                                                    >{feeling}
+                                                    </Button>
+                                                </Col>
+                                            )
+                                    }
+                                </Row>
+                            )
                         }
-
-
-
                     </div>
 
 
