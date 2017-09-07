@@ -52,6 +52,10 @@ export const deleteEntry = uid => dispatch => {
   ref.remove()
 }
 
+export const addFeeling = event => dispatch => {
+console.log(event.value)
+}
+
 const initialState = {
   data: null
 }

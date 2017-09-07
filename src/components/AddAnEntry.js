@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateEntry, createEntry} from '../state/entries'
+import {updateEntry, createEntry, addFeeling} from '../state/entries'
 import moment from 'moment'
 import MainMenu from "./MainMenu"
 import {
@@ -244,7 +244,8 @@ class AddAnEntry extends React.Component {
                                                     <Button
                                                         key={feeling}
                                                         value={feeling}
-                                                        onClick={({feeling})=>console.log('kliknięty button feeling'+ {feeling})}
+                                                        onClick={this.props.handleAddFeelingClick}
+                                                        //onClick={console.log({feeling})}
                                                     >{feeling}
                                                     </Button>
                                                 </Col>
@@ -310,6 +311,7 @@ export default connect(
         entries: state.entries.data
     }),
     dispatch => ({
+        handleAddFeelingClick: event => dispatch(addFeeling(event)),
         createEntry: data => dispatch(createEntry(data)),
         updateEntry: (uid, data) => dispatch(updateEntry(uid, data))
     })
