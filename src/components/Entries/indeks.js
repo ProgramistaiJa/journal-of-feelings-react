@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {deleteEntry} from '../state/entries'
-import {fetchEntries} from '../state/fetchingdata'
-import MainMenu from "./MainMenu";
+import {deleteEntry} from '../../state/entries'
+import {fetchEntries} from '../../state/fetchingdata'
+import MainMenu from "../MainMenu/indeks";
 import {Table, Button} from 'react-bootstrap'
 
 

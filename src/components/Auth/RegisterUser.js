@@ -1,17 +1,23 @@
-import React from 'react';
-import firebase from 'firebase'
-import {syncUser} from '../state/auth'
-import {connect} from 'react-redux'
+import React from "react";
+import firebase from "firebase";
+import {syncUser} from "../../state/auth";
+import {connect} from "react-redux";
+
+import {Button, Col, FormControl, FormGroup} from "react-bootstrap";
 
 
-import {FormGroup, Col, FormControl, Button} from 'react-bootstrap'
-
-
-class LoginForm extends React.Component {
+class RegisterUser extends React.Component {
     state = {
         email: '',
         password: '',
-        message: null
+        message: null,
+        username: ''
+    }
+
+    handleUserNameChange = event => {
+        this.setState({
+            username: event.target.value
+        })
     }
 
     handleEmailChange = event => {
@@ -26,29 +32,49 @@ class LoginForm extends React.Component {
         })
     }
 
-    handleSubmit = event => {
 
+
+    handleSubmit = event => {
         event.preventDefault()
-        firebase.auth().signInWithEmailAndPassword(
+        firebase.auth().createUserWithEmailAndPassword(
             this.state.email,
             this.state.password
         ).then(
-            () => this.setState({message: 'User logged in'})
-        ).catch(
-            error => this.setState({message: error.message})
+            user => {
+                //console.log(user)
+                user.updateProfile({
+                    displayName: this.props.username
+                }).then(
+                    () => this.props.syncUser({...user})
+                )
+            }
+        ).then(
+            ()=> this.setState({message: 'New user created'})
         )
     }
 
-
     render() {
         return (
-
             <div className="loginDiv">
                 <form onSubmit={this.handleSubmit}>
 
+                    <FormGroup controlId="formHorizontalUsername"
+                    >
+
+
+                        <Col sm={12}>
+                            <FormControl
+                                type="text"
+                                placeholder="Nazwa użytkownika"
+                                value={this.state.username}
+                                onChange={this.handleUserNameChange}
+                            />
+                        </Col>
+                    </FormGroup>
+
                     <FormGroup controlId="formHorizontalEmail"
                     >
-                        {/*<p>{this.state.message}</p>*/}
+                        <p>{this.state.message}</p>
 
                         <Col sm={12}>
                             <FormControl
@@ -64,16 +90,15 @@ class LoginForm extends React.Component {
 
                         <Col sm={12}>
                             <FormControl
-                                type="password"
-                                placeholder="Hasło"
+                                type="text"
+                                placeholder="Ustaw hasło"
                                 value={this.state.password}
                                 onChange={this.handlePasswordChange}
-                                autoComplete="off"
                             />
                             <Button block
                                     bsStyle="warning"
                                     type="submit"
-                            >Login
+                            >Stwórz nowego użytkownika
                             </Button>
                         </Col>
 
@@ -81,6 +106,7 @@ class LoginForm extends React.Component {
                     </FormGroup>
 
                 </form>
+
 
             </div>
         )
@@ -92,4 +118,4 @@ export default connect(
     dispatch => ({
         syncUser: (user) => dispatch(syncUser(user))
     })
-)(LoginForm)
+)(RegisterUser)
