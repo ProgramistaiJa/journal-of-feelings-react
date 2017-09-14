@@ -1,4 +1,6 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {updateEntry, createEntry, addFeeling} from '../../state/entries'
 import moment from 'moment'
 import {
     FormGroup,
@@ -11,7 +13,7 @@ class AddDate extends React.Component {
 
     state = {
         //uid: this.props.uid || null,
-        //date: this.props.date || moment().format('DD-MM-Y'),
+        date: this.props.date || moment().format('DD-MM-Y'),
         //feelings: this.props.feelings || '',
         //when: this.props.when || '',
         //thoughts: this.props.thoughts || '',
@@ -41,4 +43,13 @@ class AddDate extends React.Component {
 
     }
 }
-export default AddDate
+export default connect(
+    state => ({
+        entries: state.entries.data
+    }),
+    dispatch => ({
+        handleAddFeelingClick: event => dispatch(addFeeling(event.target.value)),
+        createEntry: data => dispatch(createEntry(data)),
+        updateEntry: (uid, data) => dispatch(updateEntry(uid, data))
+    })
+)(AddDate)

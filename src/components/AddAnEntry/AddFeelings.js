@@ -1,4 +1,6 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {updateEntry, createEntry, addFeeling} from '../../state/entries'
 import {
     Button,
     Col,
@@ -189,4 +191,13 @@ class AddFeelings extends React.Component {
         )
     }
 }
-export default AddFeelings
+export default connect(
+    state => ({
+        entries: state.entries.data
+    }),
+    dispatch => ({
+        handleAddFeelingClick: event => dispatch(addFeeling(event.target.value)),
+        createEntry: data => dispatch(createEntry(data)),
+        updateEntry: (uid, data) => dispatch(updateEntry(uid, data))
+    })
+)(AddFeelings)

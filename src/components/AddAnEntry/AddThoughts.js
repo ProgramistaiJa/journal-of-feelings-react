@@ -1,4 +1,6 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {updateEntry, createEntry, addFeeling} from '../../state/entries'
 import {
     FormGroup,
     Col,
@@ -37,4 +39,13 @@ class AddThoughts extends React.Component {
         )
     }
 }
-export default AddThoughts
+export default connect(
+    state => ({
+        entries: state.entries.data
+    }),
+    dispatch => ({
+        handleAddFeelingClick: event => dispatch(addFeeling(event.target.value)),
+        createEntry: data => dispatch(createEntry(data)),
+        updateEntry: (uid, data) => dispatch(updateEntry(uid, data))
+    })
+)(AddThoughts)
