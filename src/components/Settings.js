@@ -1,6 +1,6 @@
 import React from 'react'
-import Feelings from './SettingsFeelings'
-import MainMenu from "../MainMenu/indeks";
+import Feelings from './Feelings'
+import MainMenu from "./MainMenu";
 
 export default class Settings extends React.Component {
     state = {

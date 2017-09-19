@@ -25,11 +25,7 @@ export const createEntry = data => dispatch => {
   const userId = firebase.auth().currentUser.uid
   const ref = firebase.database().ref('entries/' + userId).push()
   ref.set({
-    date: data.date,
-    feelings: data.feelings,
-    //allfeelings:data.allfeelings,
-    when: data.when,
-    thoughts: data.thoughts,
+    ...data,
     author: firebase.auth().currentUser.displayName
   })
 }
@@ -40,7 +36,7 @@ export const updateEntry = (uid, data) => dispatch => {
   ref.update({
     date: data.date,
     feelings: data.feelings,
-    //allfeelings: data.allfeelings,
+    allfeelings: data.allfeelings,
     when: data.when,
     thoughts: data.thoughts
   })
@@ -53,7 +49,7 @@ export const deleteEntry = uid => dispatch => {
 }
 
 export const addFeeling = event => dispatch => {
-console.log(event.target.value)
+console.log(event.value)
 }
 
 const initialState = {

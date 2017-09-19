@@ -1,7 +1,7 @@
 import React from 'react'
-import MainMenu from '../MainMenu/indeks'
+import MainMenu from './MainMenu'
 import { LinkContainer } from 'react-router-bootstrap'
-import MenuButton from '../MainMenu/MenuButton'
+import MenuButton from './MenuButton'
 
 
 export default class FirstPage extends React.Component {

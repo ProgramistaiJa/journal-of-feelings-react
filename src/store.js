@@ -1,7 +1,6 @@
 import  { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import auth, {syncUser} from './state/auth'
-import { fetchEntries } from './state/fetchingdata'
 import entries, {initEntriesSync} from './state/entries'
 
 import localstorage from 'redux-localstorage'
@@ -36,8 +35,6 @@ firebase.auth().onAuthStateChanged(user => {
   }
   store.dispatch(syncUser(user))
 })
-
-store.dispatch(fetchEntries())
 
 
 export default store
