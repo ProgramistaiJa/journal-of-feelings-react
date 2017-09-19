@@ -27,7 +27,7 @@ export default class MainMenu extends React.Component {
                     <Navbar.Collapse>
                         <Nav>
                             <LinkContainer to="/add-an-entry">
-                                <NavItem eventKey={1}><Glyphicon glyph="star" />Add An Entry</NavItem>
+                                <NavItem  eventKey={1}><Glyphicon glyph="star" />Add An Entry</NavItem>
                             </LinkContainer>
                             <LinkContainer to="/entries">
                                 <NavItem eventKey={2}><Glyphicon glyph="star" />Entries</NavItem>
@@ -36,7 +36,7 @@ export default class MainMenu extends React.Component {
                                 <NavItem eventKey={2} href="#"><Glyphicon glyph="star" />Settings</NavItem>
                             </LinkContainer>
                         </Nav>
-                        <Nav pullRight>
+                        <Nav  pullRight>
                             <NavItem
                                 onClick={() => firebase.auth().signOut()}>
                                 Log Out

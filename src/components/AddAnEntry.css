@@ -1,8 +1,24 @@
 /*color: #54ab26  */
 /* zielony*/
 body {
+    background-color: #fbfbfb;
 
 }
-.container {
-    color: #5cb85c;
+.navbar {
+    /*background-color: #54ab26;*/
+    /*color: #ffffff;*/
+}
+
+.collapsiblebutton {
+    /*background-color: #2e6da4;*/
+    width: 98%;
+    font-size: large;
+}
+.collapsiblepanel {
+    background-color: rgba(37, 144, 199, 0.52);
+    /*width: 98%;*/
+}
+
+.submitbutton {
+
 }

@@ -8,10 +8,10 @@ import {
   FormGroup,
   Form,
   Col,
-  ControlLabel,
   FormControl,
   Grid,
-  Row
+  Row,
+    Panel
 } from 'react-bootstrap'
 
 import feelings from '../utils/feelings'
@@ -20,7 +20,11 @@ const initialState = {
   date: moment().format('YYYY-MM-DD'),
   selectedFeelings: [],
   when: '',
-  thoughts: ''
+  thoughts: '',
+  openFeelings: false,
+  openDate: false,
+  openSituation: false,
+  openthoughts: false
 }
 
 class AddAnEntry extends React.Component {
@@ -57,87 +61,101 @@ class AddAnEntry extends React.Component {
         <MainMenu/>
         <Grid>
           <Form onSubmit={handleSubmit}>
-            <FormGroup controlId="formHorizontalEmail">
-              <Col componentClass={ControlLabel} sm={12}>
-                Date
-              </Col>
-              <Col sm={12}>
-                <FormControl
-                  type="date"
-                  placeholder="Date"
-                  name="date"
-                  value={date}
-                  onChange={handleChange}
-                />
-              </Col>
-            </FormGroup>
-            <p>feelings when</p>
-            <FormGroup controlId="formControlsTextarea">
-              <Col componentClass={ControlLabel} sm={12}>
-                Situation
-              </Col>
-              <Col sm={12}>
-                <FormControl
-                  componentClass="textarea"
-                  placeholder="Describe the situation"
-                  name="when"
-                  value={when}
-                  onChange={handleChange}
-                />
-              </Col>
-            </FormGroup>
+            <Row>
+              <p>Click the button to enter the data</p>
+              <div>
+                <Button bsStyle="primary" className="collapsiblebutton" onClick={ ()=> this.setState({ openDate: !this.state.openDate })}>
+                  Date
+                </Button>
+                <Panel className="collapsiblepanel" collapsible expanded={this.state.openDate}>
+                    <FormControl
+                        type="date"
+                        placeholder="Date"
+                        name="date"
+                        value={date}
+                        onChange={handleChange}
+                    />
+                </Panel>
+              </div>
+            </Row>
+            <Row>
+              <div>
+                <Button bsStyle="primary" className="collapsiblebutton" onClick={ ()=> this.setState({ openSituation: !this.state.openSituation })}>
+                  Situation
+                </Button>
+                <Panel className="collapsiblepanel" collapsible expanded={this.state.openSituation}>
+                  <FormControl
+                      componentClass="textarea"
+                      placeholder="Describe the situation"
+                      name="when"
+                      value={when}
+                      onChange={handleChange}
+                  />
+                </Panel>
+              </div>
+            </Row>
 
-            <h2>Feelings</h2>
+            <Row>
+              <Button bsStyle="primary" className="collapsiblebutton" onClick={ ()=> this.setState({ openFeelings: !this.state.openFeelings })}>
+                My Feelings
+              </Button>
+              <Panel className="collapsiblepanel" collapsible expanded={this.state.openFeelings}>
 
-            <div>
-              {
-                Object.entries(feelings).map(
-                  ([key, value]) => (
-                    <Row key={key} style={{ marginTop: 20, paddingBottom: 20, borderBottom: '1px solid black' }}>
-                      {
-                        value.map(
-                          feeling => (
-                            <Col key={feeling} sm={6} md={3} lg={2}>
-                              <Button
-                                block
-                                data-feeling={feeling}
-                                active={selectedFeelings.includes(feeling)}
-                                onClick={handleToggleFeelingClick}
-                              >
-                                {feeling}
-                              </Button>
-                            </Col>
+                  {
+                      Object.entries(feelings).map(
+                          ([key, value]) => (
+                              <Row key={key} style={{ marginTop: 20, paddingBottom: 20, borderBottom: '1px solid black' }}>
+                                  {
+                                      value.map(
+                                          feeling => (
+                                              <Col key={feeling} sm={6} md={3} lg={2}>
+                                                <Button
+                                                    block
+                                                    data-feeling={feeling}
+                                                    active={selectedFeelings.includes(feeling)}
+                                                    onClick={handleToggleFeelingClick}
+                                                >
+                                                    {feeling}
+                                                </Button>
+                                              </Col>
+                                          )
+                                      )
+                                  }
+                              </Row>
                           )
-                        )
-                      }
-                    </Row>
-                  )
-                )
-              }
-            </div>
+                      )
+                  }
 
-            <FormGroup controlId="formControlsTextarea">
-              <Col componentClass={ControlLabel} sm={12}>
-                My thoughts
-              </Col>
-              <Col sm={12}>
-                <FormControl
-                  componentClass="textarea"
-                  placeholder="Your thoughts"
-                  name="thoughts"
-                  value={thoughts}
-                  onChange={handleChange}
-                />
-              </Col>
-            </FormGroup>
+              </Panel>
+            </Row>
+
+
+            <Row>
+              <div>
+                <Button bsStyle="primary" className="collapsiblebutton" onClick={ ()=> this.setState({ openthoughts: !this.state.openthoughts })}>
+                  My thoughts
+                </Button>
+                <Panel className="collapsiblepanel" collapsible expanded={this.state.openthoughts}>
+                  <FormControl
+                      componentClass="textarea"
+                      placeholder="Your thoughts"
+                      name="thoughts"
+                      value={thoughts}
+                      onChange={handleChange}
+                  />
+                </Panel>
+              </div>
+            </Row>
+            <Row>
             <FormGroup>
               <Col sm={12}>
-                <Button type="submit">
+                <Button bsStyle="warning" className="submitbutton" type="submit">
                   Add an Entry
                 </Button>
 
               </Col>
             </FormGroup>
+            </Row>
           </Form>
         </Grid>
       </div>
