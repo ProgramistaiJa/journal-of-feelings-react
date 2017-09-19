@@ -2,3 +2,6 @@ a.white {
     color: white;
     text-decoration: none;
 }
+.MenuButton {
+    margin: 1%;
+}

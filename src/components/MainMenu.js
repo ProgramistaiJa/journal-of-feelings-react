@@ -10,6 +10,7 @@ import {
 } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import firebase from 'firebase'
+import './AddAnEntry.css'
 
 export default class MainMenu extends React.Component {
 
