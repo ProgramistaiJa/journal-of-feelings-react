@@ -104,7 +104,7 @@ class AddAnEntry extends React.Component {
                   {
                       Object.entries(feelings).map(
                           ([key, value]) => (
-                              <Row key={key} style={{ marginTop: 20, paddingBottom: 20, borderBottom: '1px solid black' }}>
+                              <Row key={key} style={{ marginTop: 20, paddingBottom: 20, borderBottom: '1px solid white' }}>
                                   {
                                       value.map(
                                           feeling => (
