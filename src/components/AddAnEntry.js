@@ -18,7 +18,7 @@ import feelings from '../utils/feelings'
 
 const initialState = {
   date: moment().format('YYYY-MM-DD'),
-  selectedFeelings: [],
+  selectedFeelings: [''],
   when: '',
   thoughts: '',
   openFeelings: false,
